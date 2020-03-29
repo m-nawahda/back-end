@@ -37,17 +37,7 @@ else {
 
 }
 
-$result = mysqli_query($conn, $SQL);
-//$check = mysqli_fetch_array($result);
-/*if (!isset($check))
-{
-    $Message = "no available delivery ";
-    $MessageJSON = json_encode($Message);
-            
-    // Echo the message on Screen.
-     echo $MessageJSON ; 
-}*/
- 
+$result = mysqli_query($conn, $SQL); 
 if ($result->num_rows >0) {
  while($row[] = $result->fetch_assoc()) {
  
@@ -56,7 +46,7 @@ if ($result->num_rows >0) {
  $json = json_encode($item);
  
  }
- 
+ echo $json; 
 }
 else {
     $Message = "no available delivery ";
@@ -65,7 +55,6 @@ else {
     // Echo the message on Screen.
      echo $MessageJSON ;    
     }
-echo $json; 
     }
     mysqli_close($conn);
 
