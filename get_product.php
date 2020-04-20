@@ -5,15 +5,16 @@ $password = '';
 $conn = mysqli_connect($servername, $username, $password, "test");
 $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
-$type=$obj['type'];
+$seller_id=$obj['seller_id'];
+//$type=$obj['type'];
 if ($conn->connect_error) 
     {
         echo "Connection failed: " . $conn->connect_error;
     }
 
     else  {
-if(isset($type)){
-$SQL="SELECT `user`.`usr_name`, `user`.`full_name`,`user`.`lat`, `user`.`log`,`seller`.`seller_id`,`photos`.`photo` FROM `user` JOIN `photos` JOIN `seller` ON `user`.`photo_id`=`photos`.`photo_id` AND `seller`.`usr_name`=`user`.`usr_name` WHERE `user`.`type`='seller'  AND `seller`.`type`='".$type."'";
+ if(isset($seller_id)){
+$SQL="SELECT`product_id`, `description`, `name`,`type` FROM `product` WHERE `seller_id`='".$seller_id."'";
 //`photos`.`photo`
 $result = mysqli_query($conn, $SQL);
 }
@@ -23,13 +24,12 @@ if ($result->num_rows >0) {
  $item = $row;
  
  $json = json_encode($item);
- 
  }
  echo $json; 
 
 }
 else {
-    $Message = "no available shops";
+    $Message = "no available product";
     $MessageJSON = json_encode($Message);
             
     // Echo the message on Screen.
