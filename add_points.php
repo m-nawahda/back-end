@@ -31,7 +31,7 @@ $message="this key is not available";
             $notexistKeyJSON = json_encode($message);
             
             // Echo the message on Screen.
-             echo $notexistKeyJSON ; 
+             echo $message ; 
 }
 else{
 //$row=mysqli_fetch_assoc($result);
@@ -40,7 +40,7 @@ if($check['state']==1){
     // Converting the message into JSON format.
     $notexistKeyJSON = json_encode($message);
     // Echo the message on Screen.
-     echo $notexistKeyJSON ; 
+     echo $message ; 
 }
 else {
 $amount=$check['amount'];
@@ -59,7 +59,7 @@ else {
     // Converting the message into JSON format.
     $notexistKeyJSON = json_encode($message);
     // Echo the message on Screen.
-     echo $notexistKeyJSON ; 
+     echo $message ; 
 }
 
    mysqli_close($conn);
