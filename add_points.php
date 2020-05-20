@@ -8,6 +8,7 @@ $json = file_get_contents('php://input');
 $obj = json_decode($json,true);
 $key=$obj['key'];
 $usr_name=$obj['usr_name'];
+$points=$obj['points'];
 //$city=$obj['city'];
 //$sub_address=$obj['sub_address'];
 
@@ -43,11 +44,22 @@ if($check['state']==1){
      echo $message ; 
 }
 else {
-$amount=$check['amount'];
+$amount=$check['amount']+$points;
 $update="UPDATE `keys` SET `state`= 1 WHERE `key`='".$key."' ";
 $stmt = $conn->prepare($update);
-// execute the query
 $stmt->execute();
+
+$select_cst = "SELECT `point_id` FROM `customer` WHERE `usr_name`='" .$usr_name. "'";
+$result1 = mysqli_query($conn, $select_cst);
+$check1 = mysqli_fetch_array($result1);
+$point_id=$check1['point_id'];
+$time = time();
+      $date = date('Y-m-d H:i:s');
+
+$sql="UPDATE `points` SET `amount_points`='" .$amount. "',`date_mod`='".$date."' WHERE `point_id`='".$point_id."'";
+$result2 = mysqli_query($conn, $sql);
+
+// execute the query
 echo json_decode($amount);
 }
 }
