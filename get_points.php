@@ -18,14 +18,12 @@ if ($conn->connect_error)
 $result1 = mysqli_query($conn, $select_cst);
 $check1 = mysqli_fetch_array($result1);
 $point_id=$check1['point_id'];
-
-
-
 $SQL="SELECT  `amount_points` FROM `points` WHERE `point_id`='".$point_id."'";
 $result = mysqli_query($conn, $SQL);
 $check2 = mysqli_fetch_array($result);
 echo $check2['amount_points'];
 }
+else echo 0;
 
     
     mysqli_close($conn);

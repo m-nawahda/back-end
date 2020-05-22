@@ -28,7 +28,7 @@ $full_name=$check1['full_name'];
    $check = mysqli_fetch_array($res_exist);
    if($check){
      if($check['state']==0){
-       if($item==$check['order']){
+       if($item===$check['order']){
        return;
        }
        else {

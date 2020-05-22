@@ -24,7 +24,8 @@ if (!isset($check)) {
     // Echo the message on Screen.
     echo $notexistEmailJSON;
 }
-else{
+else
+{
 $update = "UPDATE `deliver` SET `state`='". $state ."'  WHERE `usr_name`='" . $usr_name . "'";
 $result = mysqli_query($conn, $update);
 
