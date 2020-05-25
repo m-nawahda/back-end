@@ -32,9 +32,15 @@ $full_name=$check1['full_name'];
        return;
        }
        else {
-    $update = "UPDATE `order` SET `address_lat`='".$lat."',`address_log`='".$log."',`full_name`='".$length."',`num_products`='".$length."',`price`='".$price."',`cst_id`='". $cst_id."',`order`='". $item."', `deliver_id`='".$deliver_id."' WHERE `cst_id`='" .$cst_id. "' AND `deliver_id`='".$deliver_id."' AND `state`=0 ";
-    $result = mysqli_query($conn, $update);
-    return;
+    $update = "UPDATE `order` SET `address_lat`='".$lat."',`address_log`='".$log."',`full_name`='".$full_name."',`num_products`='".$length."',`price`='".$price."',`cst_id`='". $cst_id."',`order`='". $item."', `deliver_id`='".$deliver_id."' WHERE `cst_id`='" .$cst_id. "' AND `deliver_id`='".$deliver_id."' AND `state`=0 ";
+    $result = $conn->query($update);
+    $select_id="SELECT `order_id` FROM `order` WHERE `cst_id`='" .$cst_id. "' AND `deliver_id`='".$deliver_id."'and`address_lat`='".$lat."' and `address_log`='".$log."'and `num_products`='".$length."' and `price`='".$price."' and `order`='". $item."' and `full_name`='".$full_name."'";
+  $result_id=$conn->query($select_id);
+  $check=mysqli_fetch_array($result_id);
+  if($check){
+  echo $check['order_id'];
+  return;
+  }
   }   
   }
    }
