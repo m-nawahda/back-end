@@ -9,7 +9,7 @@
     $json = file_get_contents('php://input');
     $obj = json_decode($json, true);
     $usr_name = $obj['usr_name'];
-    $password = $obj['password'];
+    $password = sha1($obj['password']);
     $token = $obj['token'];
     if ($conn->connect_error) {
         echo "Connection failed: " . $conn->connect_error;

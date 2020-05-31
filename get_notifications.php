@@ -18,7 +18,7 @@ if ($conn->connect_error)
     $check2 = mysqli_fetch_array($result2);
     $del_id = $check2['del_id'];
     if(isset($del_id)){
-$SQL="SELECT `order_id`, `num_products`, `cst_id`,`address_lat`,`address_log`,`price`,`full_name`,`cost`,`distance`,`shops_num` FROM `order` WHERE `deliver_id`='".$del_id."' and `state`= 0";
+$SQL="SELECT `order_id`, `num_products`, `cst_id`,`address_lat`,`address_log`,`price`,`full_name`,`cost`,`distance`,`shops_num` FROM `order` WHERE `deliver_id`='".$del_id."' and `state`= 0 and `access_deliver`=0";
 //`photos`.`photo`
 $result = mysqli_query($conn, $SQL);
     

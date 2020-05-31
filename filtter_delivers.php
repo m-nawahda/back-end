@@ -17,19 +17,19 @@ if ($conn->connect_error)
 
     else  {
 if(isset($eprice)&&isset($erate)&&isset($sprice)&&isset($srate)){
-$SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`card_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
+$SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`car_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
 `user`.`log`,`user`.`full_name`,`photos`.`photo`,`user`.`token` FROM `deliver` JOIN `user` JOIN `photos` ON `deliver`.`usr_name`=`user`.`usr_name` and `user`.`photo_id`=`photos`.`photo_id` WHERE `rate` BETWEEN '".$srate."' AND '".$erate."' AND `price` BETWEEN '".$sprice."' AND '".$eprice."' and `deliver`.`state`=1 ";
 }
 else if(isset($eprice)&&isset($sprice)){
-    $SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`card_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
+    $SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`car_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
     `user`.`log`,`user`.`full_name`,`photos`.`photo`,`user`.`token` FROM `deliver` JOIN `user` JOIN `photos` ON `deliver`.`usr_name`=`user`.`usr_name` and `user`.`photo_id`=`photos`.`photo_id` WHERE `price` BETWEEN '".$sprice."' AND '".$eprice."' and `deliver`.`state`=1";
   }
 else if(isset($srate)&&isset($erate)){
-  $SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`card_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
+  $SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`car_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
   `user`.`log`,`user`.`full_name`,`photos`.`photo`,`user`.`token` FROM `deliver` JOIN `user` JOIN `photos` ON `deliver`.`usr_name`=`user`.`usr_name` and `user`.`photo_id`=`photos`.`photo_id` WHERE `rate` BETWEEN '".$srate."' AND '".$erate."' and `deliver`.`state`=1";
 }
 else {
-    $SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`card_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
+    $SQL="SELECT `deliver`.`del_id`, `deliver`.`usr_name`, `deliver`.`car_id`, `deliver`.`permit_id`, `deliver`.`price`, `deliver`.`Type_car`, `deliver`.`rate`,`user`.`lat`,
   `user`.`log`,`user`.`full_name`,`photos`.`photo`,`user`.`token` FROM `deliver` JOIN `user` JOIN `photos` ON `deliver`.`usr_name`=`user`.`usr_name` and `user`.`photo_id`=`photos`.`photo_id` where `deliver`.`state`=1";
 
 }
